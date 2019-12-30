@@ -30,3 +30,9 @@
 *.exe
 *.out
 *.app
+
+# Testing purposes
+main.cpp
+
+# VSCode
+.vscode
