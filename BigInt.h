@@ -11,13 +11,20 @@ private:
 
     void allocateMoreDigits();
     void reverse();
-    void swap(char* a, char* b);
+    void swap(char*, char*);
+    int int_pow(int, int);
 public:
     BigInt();
-    void appendDigit(int digit);
-    void appendDigit(char digit);
+    BigInt(int number);
+    void appendDigit(int);
+    void appendDigit(char);
     void appendDigits(std::string);
+    void appendDigits(int);
     int getDigitCount();
     char* getDigitsArray();
-    BigInt operator + (BigInt const &other);
+
+    BigInt operator + (BigInt const&);
+    BigInt& operator+=(BigInt const&);
+    BigInt operator ++();
+    BigInt operator ++(int);
 };

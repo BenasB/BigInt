@@ -1,5 +1,6 @@
 #include "BigInt.h"
 
+#pragma region CONSTRUCTORS
 BigInt::BigInt()
 {
     allocatedDigits = 32;
@@ -7,6 +8,19 @@ BigInt::BigInt()
     digits = new char[allocatedDigits];
 }
 
+// Starting number is an int
+// Be careful to not pass a number bigger than the int limit as an argument!
+BigInt::BigInt(int number)
+{
+    allocatedDigits = 16;
+    digitCount = 0;
+    digits = new char[allocatedDigits];
+
+    appendDigits(number);
+}
+#pragma endregion CONSTRUCTORS
+
+#pragma region PARAMETERS
 int BigInt::getDigitCount()
 {
     return digitCount;
@@ -15,6 +29,13 @@ int BigInt::getDigitCount()
 char* BigInt::getDigitsArray()
 {
     return digits;
+}
+#pragma endregion PARAMETERS
+
+#pragma region PRIVATE
+int BigInt::int_pow(int x, int e) // Because cmath pow uses floating point
+{
+    return (e == 0) ? 1 : x * int_pow(x, e - 1);
 }
 
 // Double the size of digits array to allow more digits
@@ -48,7 +69,9 @@ void BigInt::reverse()
         swap(&digits[i], &digits[digitCount-i-1]);
     }
 }
+#pragma endregion PRIVATE
 
+#pragma region APPEND
 // Appends an int that is a single digit
 void BigInt::appendDigit(int digit)
 {
@@ -87,6 +110,29 @@ void BigInt::appendDigits(std::string digitString)
     }
 }
 
+void BigInt::appendDigits(int number)
+{
+    int temp = number;
+    int n = 0;
+
+    // Count number of digits
+    while (temp != 0)
+    {
+        n++;
+        temp /= 10;
+    }
+
+    for (int i = n-1; i >= 0; i--)
+    {
+        int digit = number / int_pow(10, i);
+        digit %= 10;
+
+        appendDigit(digit);
+    }
+}
+#pragma endregion APPEND
+
+#pragma region OPERATORS
 BigInt BigInt::operator + (BigInt const &other)
 {
     // If some of the numbers do not contain any digits
@@ -119,3 +165,29 @@ BigInt BigInt::operator + (BigInt const &other)
 
     return newBigInt;
 }
+
+BigInt& BigInt::operator+=(BigInt const &other)
+{
+    *this = *this + other;
+    return *this;
+}
+
+BigInt BigInt::operator ++()
+{
+    BigInt increment;
+    increment.appendDigit(1);
+
+    *this = *this + increment;
+
+    return *this;
+}
+
+BigInt BigInt::operator ++(int)
+{
+    BigInt temp = *this;
+
+    ++(*this);
+
+    return temp;
+}
+#pragma endregion OPERATORS
