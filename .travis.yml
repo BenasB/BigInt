@@ -2,6 +2,6 @@ language: cpp
 compiler: gcc
 
 script:
-    - cmake .
-    - make
-    - ./BigInt
+- cmake .
+- make
+- ./BigInt
