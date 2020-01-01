@@ -4,4 +4,3 @@ compiler: gcc
 script:
 - cmake .
 - make
-- ./BigInt
