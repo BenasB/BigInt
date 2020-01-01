@@ -69,5 +69,5 @@ void mixedAppend()
 
 int main()
 {
-    increment();
+    sumNumbers();
 }
