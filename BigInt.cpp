@@ -30,6 +30,11 @@ char* BigInt::getDigitsArray()
 {
     return digits;
 }
+
+std::string BigInt::getDigitsString()
+{
+    return std::string(digits, digitCount);
+}
 #pragma endregion PARAMETERS
 
 #pragma region PRIVATE

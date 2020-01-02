@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION "3.12")
 
 project("BigInt")
-
-add_executable("${PROJECT_NAME}" "main.cpp" "BigInt.cpp")
+set (CMAKE_CXX_STANDARD 11)
+add_executable("${PROJECT_NAME}" "testing/append_tests.cpp" "BigInt.cpp")

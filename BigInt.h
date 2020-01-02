@@ -20,8 +20,10 @@ public:
     void appendDigit(char);
     void appendDigits(std::string);
     void appendDigits(int);
+
     int getDigitCount();
     char* getDigitsArray();
+    std::string getDigitsString();
 
     BigInt operator + (BigInt const&);
     BigInt& operator+=(BigInt const&);
