@@ -10,7 +10,7 @@ TEST_CASE ( "Appending", "[append]" )
     bigInt.appendDigit(2);
     bigInt.appendDigit(3);
 
-    std::string expectedResult = "1234";
+    std::string expectedResult = "123";
 
     REQUIRE(expectedResult == bigInt.getDigitsString());
 }
