@@ -32,6 +32,9 @@ BigInt::BigInt(std::string digitString)
 #pragma region PARAMETERS
 int BigInt::getDigitCount()
 {
+    if (digitCount == 0)
+        return 1;
+
     return digitCount;
 }
 
