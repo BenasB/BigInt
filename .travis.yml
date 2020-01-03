@@ -3,7 +3,13 @@ compiler: gcc
 
 addons:
   apt:
-    packages: lcov
+    packages:
+    - cmake
+    - lcov
+
+before_install:
+- wget https://raw.githubusercontent.com/catchorg/Catch2/master/single_include/catch2/catch.hpp
+- sudo mv catch.hpp /usr/include
 
 script:
 - cmake . -DENABLE_COVERAGE:BOOL=TRUE
