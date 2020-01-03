@@ -1,5 +1,5 @@
 #include "catch.hpp"
-#include "../BigInt.h"
+#include "../src/BigInt.h"
 
 TEST_CASE ("ConstructFromNothing", "[construct]")
 {
@@ -7,7 +7,7 @@ TEST_CASE ("ConstructFromNothing", "[construct]")
 
     std::string expectedResult = "0";
 
-    REQUIRE(expectedResult == bigInt.getDigitsString());
+    REQUIRE(bigInt.getDigitsString() == expectedResult);
 }
 
 TEST_CASE ("ConstructFromInt", "[construct]")
@@ -16,7 +16,7 @@ TEST_CASE ("ConstructFromInt", "[construct]")
 
     std::string expectedResult = "54569871";
 
-    REQUIRE(expectedResult == bigInt.getDigitsString());
+    REQUIRE(bigInt.getDigitsString() == expectedResult);
 }
 
 TEST_CASE ("ConstructFromString", "[construct]")
@@ -25,5 +25,5 @@ TEST_CASE ("ConstructFromString", "[construct]")
 
     std::string expectedResult = "1287569874564564798423519854565498465";
 
-    REQUIRE(expectedResult == bigInt.getDigitsString());
+    REQUIRE(bigInt.getDigitsString() == expectedResult);
 }

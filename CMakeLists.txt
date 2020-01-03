@@ -10,9 +10,11 @@ if (CMAKE_COMPILER_IS_GNUCC)
 	endif()
 endif()
 
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY bin/)
 set (CMAKE_CXX_STANDARD 11)
 add_executable("${PROJECT_NAME}" "testing/append.cpp" 
-								 "testing/construct.cpp" 
-								 "BigInt.cpp")
+								 "testing/construct.cpp"
+								 "testing/addition.cpp" 
+								 "src/BigInt.cpp")
 								 
 target_link_libraries("${PROJECT_NAME}" --coverage)

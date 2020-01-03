@@ -1,7 +1,7 @@
 #define CATCH_CONFIG_MAIN
 
 #include "catch.hpp"
-#include "../BigInt.h"
+#include "../src/BigInt.h"
 
 TEST_CASE ("AppendingSingleDigitsAsInt", "[append]")
 {
@@ -12,7 +12,7 @@ TEST_CASE ("AppendingSingleDigitsAsInt", "[append]")
 
     std::string expectedResult = "123";
 
-    REQUIRE(expectedResult == bigInt.getDigitsString());
+    REQUIRE(bigInt.getDigitsString() == expectedResult);
 }
 
 TEST_CASE ("AppendingMultipleDigitsAsInt", "[append]")
@@ -24,7 +24,7 @@ TEST_CASE ("AppendingMultipleDigitsAsInt", "[append]")
 
     std::string expectedResult = "124725";
 
-    REQUIRE(expectedResult == bigInt.getDigitsString());
+    REQUIRE(bigInt.getDigitsString() == expectedResult);
 }
 
 TEST_CASE ("AppendingSingleDigitsAsChar", "[append]")
@@ -36,7 +36,7 @@ TEST_CASE ("AppendingSingleDigitsAsChar", "[append]")
 
     std::string expectedResult = "589";
 
-    REQUIRE(expectedResult == bigInt.getDigitsString());
+    REQUIRE(bigInt.getDigitsString() == expectedResult);
 }
 
 TEST_CASE ("AppendingMultipleDigitsAsString", "[append]")
@@ -48,7 +48,7 @@ TEST_CASE ("AppendingMultipleDigitsAsString", "[append]")
 
     std::string expectedResult = "578002256";
 
-    REQUIRE(expectedResult == bigInt.getDigitsString());
+    REQUIRE(bigInt.getDigitsString() == expectedResult);
 }
 
 TEST_CASE ("AppendMixed", "[append]")
@@ -62,5 +62,27 @@ TEST_CASE ("AppendMixed", "[append]")
 
     std::string expectedResult = "8721235948200";
 
-    REQUIRE(expectedResult == bigInt.getDigitsString());
+    REQUIRE(bigInt.getDigitsString() == expectedResult);
+}
+
+TEST_CASE ("AppendIntOutOfBounds", "[append]")
+{
+    BigInt bigInt;
+    bigInt.appendDigit(15);
+    bigInt.appendDigit(17);
+
+    std::string expectedResult = "0";
+
+    REQUIRE(bigInt.getDigitsString() == expectedResult);
+}
+
+TEST_CASE ("AppendCharOutOfBounds", "[append]")
+{
+    BigInt bigInt;
+    bigInt.appendDigit((char)5);
+    bigInt.appendDigit((char)9);
+
+    std::string expectedResult = "0";
+
+    REQUIRE(bigInt.getDigitsString() == expectedResult);
 }
