@@ -22,7 +22,7 @@ TEST_CASE ( "AppendingMultipleDigitsAsInt", "[append]" )
     bigInt.appendDigits(47);
     bigInt.appendDigits(25);
 
-    std::string expectedResult = "1247257";
+    std::string expectedResult = "124725";
 
     REQUIRE(expectedResult == bigInt.getDigitsString());
 }
