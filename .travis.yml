@@ -4,5 +4,6 @@ compiler: gcc
 script:
 - cmake . -DENABLE_COVERAGE:BOOL=TRUE
 - make
+- ./BigInt
 - bash <(curl -s https://codecov.io/bash)
   
