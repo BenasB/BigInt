@@ -2,7 +2,7 @@ language: cpp
 compiler: gcc
 
 script:
-- cmake . -D ENABLE_COVERAGE:BOOL=TRUE
+- cmake . -DENABLE_COVERAGE:BOOL=TRUE
 - make
 - ./BigInt
 - bash <(curl -s https://codecov.io/bash)
