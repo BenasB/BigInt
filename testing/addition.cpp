@@ -12,6 +12,28 @@ TEST_CASE ("AddTwoZeros", "[addition]")
     REQUIRE(c.getDigitsString() == expectedResult);
 }
 
+TEST_CASE ("AddAZero", "[addition]")
+{
+    BigInt a("48946518456123189456156749846516189456184681518914561");
+    BigInt b;
+    BigInt c = a + b;
+
+    std::string expectedResult = "48946518456123189456156749846516189456184681518914561";
+
+    REQUIRE(c.getDigitsString() == expectedResult);
+}
+
+TEST_CASE ("AddToAZero", "[addition]")
+{
+    BigInt a;
+    BigInt b("8489456189");
+    BigInt c = a + b;
+
+    std::string expectedResult = "8489456189";
+
+    REQUIRE(c.getDigitsString() == expectedResult);
+}
+
 TEST_CASE ("AddWithSameDigitCount", "[addition]")
 {
     BigInt a(684);

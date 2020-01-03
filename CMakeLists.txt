@@ -15,6 +15,7 @@ set (CMAKE_CXX_STANDARD 11)
 add_executable("${PROJECT_NAME}" "testing/append.cpp" 
 								 "testing/construct.cpp"
 								 "testing/addition.cpp" 
+								 "testing/parameters.cpp"
 								 "src/BigInt.cpp")
 								 
 target_link_libraries("${PROJECT_NAME}" --coverage)
