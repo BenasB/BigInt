@@ -16,6 +16,7 @@ private:
 public:
     BigInt();
     BigInt(int number);
+    BigInt(std::string);
     void appendDigit(int);
     void appendDigit(char);
     void appendDigits(std::string);

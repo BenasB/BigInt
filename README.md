@@ -31,6 +31,7 @@ std::cout << a.getDigitsString();
 ```
 
 ## Todo
+* Remove digits
 * Negative numbers
 * Subtraction
 * Multiplication

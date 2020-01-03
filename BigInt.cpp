@@ -6,6 +6,8 @@ BigInt::BigInt()
     allocatedDigits = 32;
     digitCount = 0;
     digits = new char[allocatedDigits];
+
+    digits[0] = '0';
 }
 
 // Starting number is an int
@@ -17,6 +19,15 @@ BigInt::BigInt(int number)
     digits = new char[allocatedDigits];
 
     appendDigits(number);
+}
+
+BigInt::BigInt(std::string digitString)
+{
+    allocatedDigits = 16;
+    digitCount = 0;
+    digits = new char[allocatedDigits];
+
+    appendDigits(digitString);
 }
 #pragma endregion CONSTRUCTORS
 
