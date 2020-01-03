@@ -6,8 +6,6 @@ BigInt::BigInt()
     allocatedDigits = 32;
     digitCount = 0;
     digits = new char[allocatedDigits];
-
-    digits[0] = '0';
 }
 
 // Starting number is an int
@@ -39,11 +37,23 @@ int BigInt::getDigitCount()
 
 char* BigInt::getDigitsArray()
 {
+    if (digitCount == 0)
+    {
+        char* temporary = new char[1];
+        temporary[0] = '0';
+        return temporary;
+    }
+
     return digits;
 }
 
 std::string BigInt::getDigitsString()
 {
+    if (digitCount == 0)
+    {
+        return "0";
+    }
+
     return std::string(digits, digitCount);
 }
 #pragma endregion PARAMETERS

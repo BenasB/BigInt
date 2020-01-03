@@ -11,5 +11,8 @@ if (CMAKE_COMPILER_IS_GNUCC)
 endif()
 
 set (CMAKE_CXX_STANDARD 11)
-add_executable("${PROJECT_NAME}" "testing/append_tests.cpp" "BigInt.cpp")
+add_executable("${PROJECT_NAME}" "testing/append.cpp" 
+								 "testing/construct.cpp" 
+								 "BigInt.cpp")
+								 
 target_link_libraries("${PROJECT_NAME}" --coverage)
