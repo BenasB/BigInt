@@ -164,13 +164,6 @@ void BigInt::appendDigits(int number)
 #pragma region OPERATORS
 BigInt BigInt::operator + (BigInt const &other)
 {
-    // If some of the numbers do not contain any digits
-    if (digitCount == 0)
-        return other;
-    
-    if (other.digitCount == 0)
-        return *this;
-
     BigInt newBigInt;
     const BigInt* biggerNumber = (digitCount > other.digitCount) ? this : &other;
     const BigInt* smallerNumber = (digitCount <= other.digitCount) ? this : &other;
@@ -218,5 +211,38 @@ BigInt BigInt::operator ++(int)
     ++(*this);
 
     return temp;
+}
+
+// Doesn't take into account when you subtract a larger number from a smaller one
+BigInt BigInt::operator - (BigInt const &other)
+{
+    BigInt newBigInt;
+    const BigInt* biggerNumber = (digitCount >= other.digitCount) ? this : &other;
+    const BigInt* smallerNumber = (digitCount < other.digitCount) ? this : &other;
+    int difference = (*biggerNumber).digitCount - (*smallerNumber).digitCount;
+
+    int carry = 0;
+    for (int i = (*biggerNumber).digitCount-1; i >= 0; i--)
+    {
+        int a = (*biggerNumber).digits[i]-48;
+        int b = (i-difference >= 0) ? (*smallerNumber).digits[i-difference]-48 : 0;
+        int result = a-b-carry;
+        int digit = 0;
+
+        if (result >= 0)
+        {
+            digit = result;
+            carry = 0;
+        }else if (result < 0){
+            digit = 10 + result;
+            carry = 1;
+        }
+
+        newBigInt.appendDigit(digit);
+    }
+
+    newBigInt.reverse();
+
+    return newBigInt;
 }
 #pragma endregion OPERATORS

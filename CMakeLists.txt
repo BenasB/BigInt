@@ -16,6 +16,7 @@ add_executable("${PROJECT_NAME}" "testing/append.cpp"
 								 "testing/construct.cpp"
 								 "testing/addition.cpp" 
 								 "testing/parameters.cpp"
+								 "testing/subtraction.cpp"
 								 "src/BigInt.cpp")
 								 
 target_link_libraries("${PROJECT_NAME}" --coverage)

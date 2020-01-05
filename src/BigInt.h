@@ -27,6 +27,7 @@ public:
     std::string getDigitsString();
 
     BigInt operator + (BigInt const&);
+    BigInt operator - (BigInt const&);
     BigInt& operator+=(BigInt const&);
     BigInt operator ++();
     BigInt operator ++(int);
